@@ -16,6 +16,7 @@ install:
 before_script:
 - node --version
 - npm --version
+- nvm install 10.2.0
 - node_modules/.bin/newman --version
 script:
 - python -m unittest discover
