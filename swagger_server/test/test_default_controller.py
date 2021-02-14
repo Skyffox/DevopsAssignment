@@ -7,6 +7,7 @@ from six import BytesIO
 
 from swagger_server.models.student import Student  # noqa: E501
 from swagger_server.test import BaseTestCase
+import names
 
 
 class TestDefaultController(BaseTestCase):
