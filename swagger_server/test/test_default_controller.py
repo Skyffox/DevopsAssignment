@@ -3,7 +3,6 @@
 from __future__ import absolute_import
 
 from flask import json
-from six import BytesIO
 
 from swagger_server.models.student import Student  # noqa: E501
 from swagger_server.test import BaseTestCase
@@ -49,7 +48,7 @@ class TestDefaultController(BaseTestCase):
         #     method='DELETE')
         # self.assert200(response,
         #                'Response body is : ' + response.data.decode('utf-8'))
-        #
+        # 
         # response = self.client.open(
         #     '/service-api/student/{student_id}'.format(student_id=-1),
         #     method='DELETE')
@@ -61,15 +60,29 @@ class TestDefaultController(BaseTestCase):
 
         Find student by ID
         """
-        query_string = [('subject', 'subject_example')]
+        body = Student()
+        body.first_name = names.get_first_name()
+        body.last_name = names.get_last_name()
+        body.grades = {'math': 8, 'history': 9}
         response = self.client.open(
-            '/service-api/student/{student_id}'.format(student_id=789),
+            '/service-api/student',
+            method='POST',
+            data=json.dumps(body),
+            content_type='application/json')
+        student_id = (response.json)
+
+        query_string = [('math', 9)]
+        response = self.client.open(
+            '/service-api/student/{student_id}'.format(student_id=student_id),
             method='GET',
             query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
+        self.assertTrue(response.is_json)
+        self.assertIsInstance(response.json, dict)
 
 
 if __name__ == '__main__':
     import unittest
+
     unittest.main()
