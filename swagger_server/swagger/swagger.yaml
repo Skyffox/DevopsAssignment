@@ -136,5 +136,5 @@ definitions:
       student_id: 0
       last_name: "last_name"
       grades:
-        key: 6
+        key: 0
       first_name: "first_name"
