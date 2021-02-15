@@ -4,11 +4,10 @@ info:
   description: "Swagger tutorial"
   version: "1.0.0"
   title: "Swagger tutorial"
-host: "virtserver.swaggerhub.com"
+# host: "virtserver.swaggerhub.com"
 basePath: "/service-api"
-# http://localhost:8888/service-api/ui/ for 'docker run -t -i -p 8080:8080 student'
 schemes:
-- "https"
+# - "https"
 - "http"
 paths:
   /student:
@@ -130,11 +129,12 @@ definitions:
         type: "string"
       grades:
         type: "object"
-        additionalProperties:
-          type: "integer"
+        properties: "{}"
+        # additionalProperties:
+        #   type: "integer"
     example:
       student_id: 0
       last_name: "last_name"
-      grades:
-        key: 6
+      grades: "{}"
+        # key: 6
       first_name: "first_name"
