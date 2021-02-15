@@ -4,10 +4,8 @@ info:
   description: "Swagger tutorial"
   version: "1.0.0"
   title: "Swagger tutorial"
-# host: "virtserver.swaggerhub.com"
 basePath: "/service-api"
 schemes:
-# - "https"
 - "http"
 paths:
   /student:
@@ -129,12 +127,10 @@ definitions:
         type: "string"
       grades:
         type: "object"
-        properties: "{}"
-        # additionalProperties:
-        #   type: "integer"
+        additionalProperties:
+          type: "integer"
     example:
       student_id: 0
       last_name: "last_name"
       grades: "{}"
-        # key: 6
       first_name: "first_name"
