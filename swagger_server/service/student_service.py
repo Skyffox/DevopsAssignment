@@ -47,8 +47,8 @@ def get_student_by_id(student_id, subject):
 
 
 def get_student_by_last_name(last_name):
-    query = Query()
-    student = student_db.get(query.last_name == last_name)
+    User = Query()
+    student = student_db.get(User.last_name == last_name)
 
     if not student:
         return "Not Found", 404
