@@ -37,7 +37,7 @@ paths:
         "409":
           description: "already exists"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
-  /student/:
+  /student/{student_id}:
     get:
       summary: "Find student by last name"
       description: "Returns a single student"
@@ -48,7 +48,7 @@ paths:
       parameters:
       - name: "last_name"
         in: "query"
-        description: "The subject last name"
+        description: "last name of student to return"
         required: true
         type: "string"
       responses:
@@ -128,7 +128,7 @@ definitions:
       grades:
         type: "object"
         additionalProperties:
-          type: "integer"
+            type: "integer"
     example:
       student_id: 0
       last_name: "last_name"

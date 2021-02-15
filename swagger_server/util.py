@@ -28,6 +28,7 @@ def _deserialize(data, klass):
     else:
         return deserialize_model(data, klass)
 
+
 def _deserialize_primitive(data, klass):
     """Deserializes to primitive type.
     :param data: data to deserialize.
