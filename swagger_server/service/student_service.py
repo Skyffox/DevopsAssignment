@@ -46,6 +46,14 @@ def get_student_by_id(student_id, subject):
         return 'Not found', 404
 
 
+def delete_student(student_id):
+    student = student_db.get(doc_id=int(student_id))
+    if not student:
+        return "Not Found", 404
+    student_db.remove(doc_ids=[int(student_id)])
+    return student_id, 200
+
+
 def get_student_by_last_name(last_name):
     User = Query()
     student = student_db.get(User.last_name == last_name)
@@ -55,11 +63,3 @@ def get_student_by_last_name(last_name):
 
     student = Student.from_dict(student)
     return student, 200
-
-
-def delete_student(student_id):
-    student = student_db.get(doc_id=int(student_id))
-    if not student:
-        return "Not Found", 404
-    student_db.remove(doc_ids=[int(student_id)])
-    return student_id, 200
