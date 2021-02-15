@@ -36,7 +36,8 @@ def get_student_by_id(student_id, subject):
         return student
     student = Student.from_dict(student)
     if subject not in student.grades:
-        return student
+        return "Not Found", 404
+        #return student
 
 
 def delete_student(student_id):
