@@ -33,10 +33,21 @@ def add_student(student):
 def get_student_by_id(student_id, subject):
     student = student_db.get(doc_id=int(student_id))
     if not student:
-        return student
-    student = Student.from_dict(student)
-    if subject not in Student.grades:
         return "Not Found", 404
+    student = Student.from_dict(student)
+    if not subject or subject in sudent.grades:
+        return student, 200
+    else:
+        return "Not Found", 404
+
+
+def get_student_by_last_name(last_name):
+    User = Query()
+    student = student_db.get(User.last_name == last_name)
+    if not student:
+        return "Not Found", 404
+    student = Student.from_dict(student)
+    return student, 200
 
 
 def delete_student(student_id):
