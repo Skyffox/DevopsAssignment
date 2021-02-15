@@ -16,7 +16,7 @@ student_db = TinyDB(db_file_path)
 
 
 def add_student(student):
-    if not student.first_name is None or student.last_name is None:
+    if student.first_name is None or student.last_name is None:
         return 'invalid input', 405
 
     queries = []
